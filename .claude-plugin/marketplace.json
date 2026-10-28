@@ -1,0 +1,5 @@
+{
+  "name": "lossless-compactor",
+  "owner": { "name": "ioctlLR" },
+  "plugins": [{ "name": "lossless-compactor", "source": "./" }]
+}

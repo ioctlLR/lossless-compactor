@@ -1,0 +1,39 @@
+{
+  "name": "lossless-compactor",
+  "version": "0.1.0",
+  "description": "Zero-LLM compaction rebuilt from the full transcript, with session recall (port of @pi-unipi/compactor)",
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "method": {
+      "type": "string",
+      "title": "Compaction method",
+      "description": "lossless builds the summary with no model call; llm uses Claude Code's own model-written summary.",
+      "default": "lossless",
+      "options": ["lossless", "llm"]
+    },
+    "autoCompactWindow": {
+      "type": "number",
+      "title": "Auto-compact window (tokens)",
+      "description": "Sets Claude Code's autoCompactWindow; it auto-compacts a buffer below this. 0 leaves Claude Code's own.",
+      "default": 0
+    },
+    "summaryBudgetTokens": {
+      "type": "number",
+      "title": "Summary budget (tokens)",
+      "description": "Size of the lossless summary. 0 is auto (1.5k to 4k, at most 8% of the window).",
+      "default": 0
+    },
+    "smartKeepTail": {
+      "type": "boolean",
+      "title": "Smart keep tail",
+      "description": "Keeps more recent turns when the kept tail would be under 5k tokens (up to 25k).",
+      "default": true
+    },
+    "notify": {
+      "type": "boolean",
+      "title": "Notify",
+      "description": "Shows a toast after each automatic compaction. Failures always show.",
+      "default": true
+    }
+  }
+}
